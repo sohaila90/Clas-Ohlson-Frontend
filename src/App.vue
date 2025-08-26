@@ -3,6 +3,7 @@
 import LoggedInUser from "./components/Pages/LoggedInUser.vue";
 import Login from "./components/Pages/Login.vue";
 import SignUp from "./components/Pages/SignUp.vue";
+import Api from "./services/Api.js";
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import SignUp from "./components/Pages/SignUp.vue";
     <Login />
     <SignUp />
     <LoggedInUser />
+    <Api />
   </main>
 </template>
 

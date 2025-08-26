@@ -20,7 +20,7 @@
       placeholder="Lag et nytt passord"
     />
     <input type="password" v-model="password" placeholder="Gjenta passordet" />
-    <button @click="singUpBtn()">Bli medlem</button>
+    <button @click="signUpBtn()">Bli medlem</button>
 
     <p>Api fra Rider</p>
     <ul>
@@ -33,44 +33,55 @@
 </template>
 
 <script>
+import Api from "@/services/Api.js";
+
 export default {
-  name: "SignUp",
+  name: "Signup",
   data() {
     return {
+      users: [],
       firname: "",
       lastName: "",
       email: "",
       number: "",
       password: "",
-      users: [], // vi lager tom liste til å begynne med
     };
   },
-  methods: {
-    singUpBtn() {
-      this.firname = {
-        name: "Sohaila",
-      };
-      console.log("funker dette tro?", this.firname);
-    },
 
-    async fetchData() {
+  async mounted() {
+    const response = await Api.getUsers();
+    this.users = response.data;
+  },
+
+  methods: {
+    async signUpBtn() {
       try {
-        const response = await fetch("http://localhost:5072/users");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.text();
-        this.users = data;
+        const newUser = {
+        firname: this.firname,
+        lastName: this.lastName,
+        email: this.email,
+        number: this.number,
+        password: this.password
+        };
+
+        const response = await Api.addUser(newUser);
+        console.log("Bruker opprettet:", response.data);
+
+        // legg til bruker i lista
+        this.users.push(response.data);
+
+        // tøm inputfeltene
+        this.firname = "";
+        this.lastName = "";
+        this.email = "";
+        this.number = "";
+        this.password = "";
       } catch (error) {
-        console.error("Error fetching data", error);
-      }
+        console.error("Feil ved registrerting", error);
+      };
     },
   },
-  mounted() {
-    // kjører fetchdata når comp starter
-    this.fetchData();
-  },
-};
+  };
 </script>
 
 <style>
