@@ -1,12 +1,13 @@
 <template>
-  <div>
+  <section id="dashboard">
+    <div class="card">
+      <h2>Velkommen</h2>
+    </div>
+  </section>
+   <div>
     <input type="text" placeholder="Hva ser du etter i dag?" />
     <div>
       <button @click="fetchData">Søk</button>
-    </div>
-    <div>
-        <!-- <h1>API data from Rider</h1> -->
-        <pre>{{ myData }}</pre>
     </div>
   </div>
 </template>

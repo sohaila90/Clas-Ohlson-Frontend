@@ -1,42 +1,46 @@
 <template>
-  <img class="logo" src="../src/assets/Clas_Ohlson.svg (1).png" />
+  <img class="logo" src="/src/assets/Clas_Ohlson.svg (1).png" />
   <p>Bli medlem</p>
 
   <form @submit.prevent="signUpBtn">
     <p>Fornavn</p>
-    <input type="text" v-model="firname" placeholder="Skriv inn ditt fornavn" />
+    <input type="text" v-model="Firname" placeholder="Skriv inn ditt fornavn" />
 
     <p>Etternavn</p>
     <input
       type="text"
-      v-model="lastName"
+      v-model="Lastname"
       placeholder="Skriv inn ditt etternavn"
     />
 
     <p>E-post</p>
-    <input type="text" v-model="email" placeholder="Skriv inn din e-post" />
+    <input type="text" v-model="Email" placeholder="Skriv inn din e-post" />
 
     <p>Mobilnummer</p>
-    <input type="number" v-model="number" placeholder="+47" />
+    <input type="text" v-model="Phone" placeholder="+47" />
 
     <input
       type="password"
-      v-model="password"
+      v-model="Password"
       placeholder="Lag et nytt passord"
     />
 
-    <input type="password" v-model="password" placeholder="Gjenta passordet" />
+    <input
+      type="password"
+      v-model="ConfirmPassword"
+      placeholder="Gjenta passordet"
+    />
 
     <button type="submit">Bli medlem</button>
   </form>
 
-  <p>Api fra Rider</p>
+  <!-- <p>Api fra Rider</p>
   <ul>
     <li v-for="user in users" :key="user.id">
-      {{ user.firname }} {{ user.lastName }} {{ user.email }} {{ user.number }}
+      {{ user.Firname }} {{ user.lastName }} {{ user.email }} {{ user.number }}
       {{ user.password }}
     </li>
-  </ul>
+  </ul> -->
 </template>
 
 <script>
@@ -47,11 +51,12 @@ export default {
   data() {
     return {
       users: [],
-      firname: "",
-      lastName: "",
-      email: "",
-      number: "",
-      password: "",
+      Firname: "",
+      Lastname: "",
+      Email: "",
+      Phone: "", // husk at denne kan hete phone pga det er internt
+      Password: "",
+      ConfirmPassword: "",
     };
   },
 
@@ -64,13 +69,14 @@ export default {
     async signUpBtn() {
       try {
         const newUser = {
-          firname: this.firname,
-          lastName: this.lastName,
-          email: this.email,
-          number: this.number,
-          password: this.password,
+          firname: this.Firname,
+          lastname: this.Lastname,
+          email: this.Email,
+          number: this.Phone, // må bruke number som er riktig nøkkel for å sende til backend
+          password: this.Password,
+          confirmPassword: this.confirmPassword,
         };
-
+        console.log("Backend are you getting this?", newUser);
         const response = await Api.addUser(newUser);
         console.log("Bruker opprettet:", response.data);
 
@@ -78,11 +84,12 @@ export default {
         this.users.push(response.data);
 
         // tøm inputfeltene
-        this.firname = "";
-        this.lastName = "";
-        this.email = "";
-        this.number = "";
-        this.password = "";
+        this.Firname = "";
+        this.Lastname = "";
+        this.Email = "";
+        this.Phone = "";
+        this.Password = "";
+        this.ConfirmPassword = "";
       } catch (error) {
         console.error("Feil ved registrerting", error);
       }

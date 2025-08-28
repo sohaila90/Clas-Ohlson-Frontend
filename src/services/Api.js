@@ -14,4 +14,7 @@ export default {
   addUser(user) {
     return apiClient.post("/register", user);
   },
+  getUserInfo(userInfo) {
+    return apiClient.post("/login", userInfo);
+  }
 };

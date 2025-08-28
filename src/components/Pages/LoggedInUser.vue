@@ -1,5 +1,5 @@
 <script></script>
 
 <template>
-  <div>Hey!</div>
+  <div>Hey! Her kommet det snart info for min side</div>
 </template>
