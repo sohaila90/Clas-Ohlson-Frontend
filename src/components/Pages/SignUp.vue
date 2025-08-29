@@ -54,7 +54,6 @@ export default {
 </script>
 
 <template>
-  <img class="logo" src="/src/assets/Clas_Ohlson.svg (1).png" />
   <p>Bli medlem</p>
 
   <form @submit.prevent="signUpBtn">

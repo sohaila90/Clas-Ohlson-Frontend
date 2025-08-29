@@ -29,6 +29,11 @@ export default {
     <input v-model="Email" type="text" placeholder="E-postadresse" />
 
     <input v-model="Password" type="text" placeholder="Passord" />
-    <button @click="loginBtn()">Logg inn</button>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded"
+      @click="loginBtn()"
+    >
+      Logg inn
+    </button>
   </div>
 </template>

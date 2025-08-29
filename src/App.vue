@@ -4,7 +4,7 @@ import Login from "./components/Pages/Login.vue";
 import SignUp from "./components/Pages/SignUp.vue";
 import LoggedInUser from "./components/Pages/LoggedInUser.vue";
 
-const selectedDisplay = 0;
+const selectedDisplay = 1;
 </script>
 
 <template>
