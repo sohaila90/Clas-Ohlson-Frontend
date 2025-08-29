@@ -12,9 +12,9 @@ export default {
     return apiClient.get("/users");
   },
   addUser(user) {
-    return apiClient.post("/register", user);
+    return apiClient.post("/users/register", user);
   },
-  getUserInfo(userInfo) {
-    return apiClient.post("/login", userInfo);
-  }
+  getUserInfo(loginInfo) {
+    return apiClient.post("/users/login", loginInfo);
+  },
 };

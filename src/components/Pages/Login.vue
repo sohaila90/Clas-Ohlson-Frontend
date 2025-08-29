@@ -10,13 +10,13 @@ export default {
   },
   methods: {
     async loginBtn() {
-      const userInfo = {
-        email: this.Email,
-        password: this.Password,
+      const loginInfo = {
+        Email: this.Email,
+        Password: this.Password,
       };
-      console.log(userInfo);
+      console.log(loginInfo);
 
-      const response = await Api.getUserInfo(userInfo);
+      const response = await Api.getUserInfo(loginInfo);
       console.log("Svar fra back:", response.data);
     },
   },
