@@ -7,9 +7,9 @@
   </section>
   <div>
     <input
-      class=" text-white px-4 py-2 rounded"
       type="text"
       placeholder="Hva ser du etter i dag?"
+      class="text-pink px-4 py-2 rounded"
     />
     <div>
       <button
