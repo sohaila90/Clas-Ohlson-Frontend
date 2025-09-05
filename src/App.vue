@@ -10,7 +10,7 @@ import Tilbud from "./components/Pages/Tilbud.vue";
 import SignUp from "./components/Pages/SignUp.vue";
 import LoggedInUser from "./components/Pages/LoggedInUser.vue";
 
-const selectedDisplay = 0;
+const selectedDisplay = 1;
 </script>
 
 <template>
