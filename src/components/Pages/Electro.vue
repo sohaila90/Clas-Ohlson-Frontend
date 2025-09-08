@@ -1,22 +1,5 @@
 <script setup>
-import pepperkakehus from "@/assets/pepperkakehus.png";
-import kamera from "@/assets/kamera.png";
-import luftrenser from "@/assets/luftrenser.avif";
-import utelampe from "@/assets/utelampe.avif";
-const products = [
-  { id: 1, name: "Luftrenser", price: 1999, image: luftrenser },
-
-  { id: 2, name: "Utelampe", price: 1199, image: utelampe },
-
-  { id: 3, name: "Overvåkningskamera", price: 2190, image: kamera },
-
-  {
-    id: 4,
-    name: "Batteridrevet pepperkakehus",
-    price: 150,
-    image: pepperkakehus,
-  },
-];
+import { products } from "@/data/products";
 </script>
 
 <template>
@@ -29,17 +12,27 @@ const products = [
       komfort og kontroll, slik at du kan ta vare på det du liker – og få det
       til å vare!
     </p>
-
-    <ul v-for="product in products">
-      <img
-        :src="product.image"
-        alt="pepperkakehus"
-        class="w-40 h-40 object-cover"
-      />
-      <li>{{ product.name }}</li>
-      <li>{{ product.price }}</li>
-      <button>Legg til i handlekurv</button>
-    </ul>
+  </div>
+  <!-- grid container -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      v-for="product in products"
+      :key="product.id"
+      class="border rounded-lg p-4 shadow hover:shadow-lg transition"
+    >
+      <router-link :to="'/product/' + product.id" class="block">
+        <img
+          :src="product.image"
+          alt="pepperkakehus"
+          class="w-full h-48 object-cover rounded-md mb-4"
+        />
+        <h2 class="text-lg font-semibold">{{ product.name }}</h2>
+        <p class="text-gray-700">{{ product.price }}</p>
+      </router-link>
+      <button
+        class="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+      Legg i handlekurv</button>
+    </div>
   </div>
 </template>
 

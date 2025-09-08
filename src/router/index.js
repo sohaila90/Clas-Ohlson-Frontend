@@ -10,6 +10,7 @@ import Multimedia from "@/components/Pages/Multimedia.vue";
 import Tilbud from "@/components/Pages/Tilbud.vue";
 import SignUp from "@/components/Pages/SignUp.vue";
 import Login from "@/components/Pages/Login.vue";
+import ProductDetail from "@/components/Pages/ProductDetail.vue";
 
 const routes = [
   { path: "/", component: ClasFront },
@@ -22,6 +23,7 @@ const routes = [
   { path: "/tilbud", component: Tilbud },
   { path: "/signup", component: SignUp },
   { path: "/login", component: Login },
+  { path: "/product/:id", component: ProductDetail },
 ];
 
 const router = createRouter({
