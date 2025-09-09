@@ -1,8 +1,21 @@
 <script setup>
 import { products } from "@/data/products";
+import { banners } from "@/data/banners";
 </script>
 
 <template>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+    <div v-for="banner in banners" :key="banner.id" class="relative">
+      <img
+        :src="banner.image"
+        alt=""
+        class="w-full h-32 object-cover-rounded"
+      />
+      <p class="absolute bottom-2 left-2 text-white text-sm font-bold">
+        {{ banner.name }}
+      </p>
+    </div>
+  </div>
   <div>
     <h1 class="text-5xl text-pink-500 font-bold">Elektro</h1>
     <p class="text-xl text-violet-700">
@@ -30,8 +43,10 @@ import { products } from "@/data/products";
         <p class="text-gray-700">{{ product.price }}</p>
       </router-link>
       <button
-        class="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
-      Legg i handlekurv</button>
+        class="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+      >
+        Legg i handlekurv
+      </button>
     </div>
   </div>
 </template>
