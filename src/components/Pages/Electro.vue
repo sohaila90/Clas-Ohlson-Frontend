@@ -1,6 +1,8 @@
 <script setup>
 import { products } from "@/data/products";
 import { banners } from "@/data/banners";
+import { cart } from "@/store/cart";
+import { addProduct} from "@/store/cart"
 </script>
 
 <template>
@@ -31,7 +33,7 @@ import { banners } from "@/data/banners";
     <div
       v-for="product in products"
       :key="product.id"
-      class="border rounded-lg p-4 shadow hover:shadow-lg transition"
+      class="border rounded-lg p-6 shadow hover:shadow-lg transition"
     >
       <router-link :to="'/product/' + product.id" class="block">
         <img
@@ -42,12 +44,12 @@ import { banners } from "@/data/banners";
         <h2 class="text-lg font-semibold">{{ product.name }}</h2>
         <p class="text-gray-700">{{ product.price }}</p>
       </router-link>
-      <button
+      <button @click="addProduct(product)"
         class="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
       >
         Legg i handlekurv
       </button>
-    </div>
+    </div>ja
   </div>
 </template>
 
