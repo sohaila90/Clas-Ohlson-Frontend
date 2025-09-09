@@ -8,6 +8,11 @@ const product = products.find((p) => p.id === id);
 </script>
 
 <template>
+    <router-link 
+    to="/electro"
+    class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+    ← Tilbake
+</router-link>
   <h1 class="text-3xl font-bold">{{ product.name }}</h1>
   <img class="w-64 h-64 object-cover" :src="product.image" alt="luftrenser" />
   <p class="text-xl">{{ product.price }},00</p>
