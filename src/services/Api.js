@@ -17,4 +17,7 @@ export default {
   getUserInfo(loginInfo) {
     return apiClient.post("/users/login", loginInfo);
   },
+  getProducts() {
+    return apiClient.get("/products");
+  },
 };

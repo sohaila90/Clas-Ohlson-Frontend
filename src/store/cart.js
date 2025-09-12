@@ -6,6 +6,7 @@ export function addProduct(product) {
     console.log("Handlekurv nå:", cart.value);
 }
 
-export function removeProduct() {
-    cart.value = cart.value.filter((p) => p.id !== productId); // fjerner produkt på første match på id
+export function removeProduct(item) {
+    cart.value = cart.value.filter((p) => p.id !== item.id); // fjerner produkt på første match på id
+    console.log("Hallo:",cart.value);
 }

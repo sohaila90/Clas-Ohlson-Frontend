@@ -1,6 +1,7 @@
 <script setup>
 import { cart } from "@/store/cart"
 import { ref } from "vue";
+import { removeProduct } from "@/store/cart";
 
 const showCart = ref(false);
 </script>
@@ -24,9 +25,11 @@ const showCart = ref(false);
     <!-- Handlekurv pop-up -->
     <div v-if="showCart" class="p-4 bg-white shadow rounded mt-4">
       <h2 class="font-bold mb-2">Handlekurv</h2>
+      
       <ul>
-        <li v-for="item in cart" :key="item.id">
-          {{ item.name }} - {{ item.price }},-
+        <li v-for="item in cart" :key="item.id" class="flex justify-between items-center">
+          <span>{{ item.name }} - {{ item.price }},-</span>
+          <button @click="removeProduct(item)" class="text-red-500 hover:text-red-700">❌</button>
         </li>
       </ul>
 
