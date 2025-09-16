@@ -1,26 +1,22 @@
-<script>
-// import { banners } from "@/data/banners";
-import { cart } from "@/store/cart";
-import { addProduct } from "@/store/cart";
+<script setup>
+import { ref, onMounted } from "vue";
+import { cart, addProduct } from "@/store/cart";
 import Api from "@/services/Api";
 
-export default {
-  name: "Electro",
-  data() {
-    return {
-      products: [], // fylles opp fra API
-      // name: "",
-      // price: "",
-      // category: "",
-      // image_url: "",
-    };
-  },
+const products = ref([]);
 
-  async mounted() {
-    const response = await Api.getProducts();
-    this.products = response.data;
-  },
-};
+// export default {
+//   name: "Electro",
+//   data() {
+//     return {
+//       products: [], // fylles opp fra API
+//     };
+//   },
+
+onMounted(async () => {
+  const response = await Api.getProducts();
+  products.value = response.data;
+});
 </script>
 
 <template>
@@ -44,7 +40,7 @@ export default {
     >
       <router-link :to="'/product/' + product.id" class="block">
         <img
-          :src="product.image_url"
+          :src="product.imageUrl"
           alt="pepperkakehus"
           class="w-full h-48 object-cover rounded-md mb-4"
         />
@@ -59,4 +55,12 @@ export default {
       </button>
     </div>
   </div>
+        // Se handlekurv
+        <h2 class="mt-8 text-xl font-bold">Handlekurv</h2>
+  <ul>
+    <li v-for="item in cart" :key="item.id">
+      {{ item.name }} ({{ item.quantity }}) - {{ item.price * item.quantity }}
+      <button @click="reduceBtn(item)">-</button>
+    </li>
+  </ul>
 </template>
