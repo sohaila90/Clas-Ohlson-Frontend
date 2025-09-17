@@ -1,7 +1,6 @@
 <script setup>
-import { cart } from "@/store/cart"
 import { ref } from "vue";
-import { removeProduct } from "@/store/cart";
+import { cart, removeProduct, addProduct, reduceBtn } from "@/store/cart";
 
 const showCart = ref(false);
 </script>
@@ -19,7 +18,9 @@ const showCart = ref(false);
      v-if="cart.length > 0"
      class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5 pointer-events-none"
      >
-      {{ cart.length }}
+      {{ 
+      cart.reduce((total, item) => total + item.quantity, 0) 
+      }}
      </span>
      </div>
     <!-- Handlekurv pop-up -->
@@ -27,9 +28,43 @@ const showCart = ref(false);
       <h2 class="font-bold mb-2">Handlekurv</h2>
       
       <ul>
-        <li v-for="item in cart" :key="item.id" class="flex justify-between items-center">
-          <span>{{ item.name }} - {{ item.price }},-</span>
-          <button @click="removeProduct(item)" class="text-red-500 hover:text-red-700">❌</button>
+        <li v-for="item in cart" :key="item.id" 
+        class="flex items-center gap-2">
+          <span class="flex-1">{{ item.name }} - {{ item.price * item.quantity }} kr</span>
+
+          <!-- minus btn -->
+           <button
+           @click="reduceBtn(item)"
+           class="px-2 bg-red-500 text-white rounded"
+           >
+           -
+          </button>
+
+          <!-- antall -->
+           <span class="w-6 text-center">{{ item.quantity }}</span>
+        
+           <!-- pluss -->
+            <button
+            @click="addProduct(item)"
+            class="px-2 bg-green-500 text-white rounded"
+            >
+            +
+            </button>
+
+            <!-- fjerne helt -->
+          <!-- <button 
+          @click="removeProduct(item)" 
+          class="text-red-500 hover:text-red-700"
+          >
+          ❌
+        </button> -->
+        </li>
+
+        <li class="font-bold border-t mt-2 pt-2">
+          Totalt: {{ 
+            cart.reduce((total, item) => total + item.price * item.quantity, 0) 
+           }} kr
+
         </li>
       </ul>
 

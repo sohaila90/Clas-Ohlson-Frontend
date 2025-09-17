@@ -1,17 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { cart, addProduct } from "@/store/cart";
+import { cart, addProduct, reduceBtn } from "@/store/cart";
 import Api from "@/services/Api";
 
 const products = ref([]);
-
-// export default {
-//   name: "Electro",
-//   data() {
-//     return {
-//       products: [], // fylles opp fra API
-//     };
-//   },
 
 onMounted(async () => {
   const response = await Api.getProducts();
@@ -55,12 +47,28 @@ onMounted(async () => {
       </button>
     </div>
   </div>
-        // Se handlekurv
-        <h2 class="mt-8 text-xl font-bold">Handlekurv</h2>
+  // Se handlekurv
+  <h2 class="mt-8 text-xl font-bold">Handlekurv</h2>
   <ul>
-    <li v-for="item in cart" :key="item.id">
-      {{ item.name }} ({{ item.quantity }}) - {{ item.price * item.quantity }}
-      <button @click="reduceBtn(item)">-</button>
+    <li v-for="item in cart" :key="item.id" class="flex items-center gap-2">
+      <span>{{ item.name }} - {{ item.price * item.quantity }} kr</span>
+
+      <!-- minus btn -->
+       <div class="flex items-center gap-2">
+      <button
+        @click="reduceBtn(item)"
+        class="px-2 bg-red-500 text-white rounded"
+      >
+        -
+      </button>
+
+      <!-- vis antall -->
+      <span class="w-6 text-center">{{ item.quantity }}</span>
+
+      <!-- pluss btn -->
+      <button @click="addProduct(item)"
+      class="px-2 bg-green-500 text-white rounded">+</button>
+      </div>
     </li>
   </ul>
 </template>
