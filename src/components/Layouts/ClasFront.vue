@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { cart, removeProduct, addProduct, reduceBtn } from "@/store/cart";
+import { cart, addProduct, reduceBtn } from "@/store/cart";
 
 const showCart = ref(false);
 </script>

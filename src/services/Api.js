@@ -23,4 +23,10 @@ export default {
   getProduct(id) {
     return apiClient.get(`/products/${id}`);
   },
+  addToCartApi(cartItem) {
+    return apiClient.post("/cart/add", cartItem);
+  },
+  getCartItems() {
+    return apiClient.get("/cart");
+  },
 };

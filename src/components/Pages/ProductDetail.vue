@@ -42,7 +42,7 @@ onMounted(async () => {
   </p> -->
   <button
     @click="addProduct(product)"
-    class="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+    class="mt-3 w-full bg-black text-white font-bold py-2 rounded hover:bg-grey-500"
   >
     Legg til i handlekurv
   </button>
