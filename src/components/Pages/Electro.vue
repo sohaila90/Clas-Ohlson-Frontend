@@ -3,13 +3,10 @@ import { ref, onMounted } from "vue";
 import { cart, setCart, addProduct, reduceBtn } from "@/store/cart";
 import Api from "@/services/Api";
 import addToCartApi from "@/services/Api";
-// import addProduct from "@/services/Api"
 
 const products = ref([]);
-// const cartItems = ref([]);
 
 onMounted(async () => {
-  // Hent produkter
   const response = await Api.getProducts();
   products.value = response.data;
 
