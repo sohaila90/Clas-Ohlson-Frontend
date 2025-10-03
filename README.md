@@ -26,5 +26,4 @@ Run the project locally:
 npm run dev
 ````
 
-```bash
 The app will be available at http://localhost:5173
