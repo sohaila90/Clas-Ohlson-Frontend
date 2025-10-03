@@ -1,6 +1,27 @@
-# Clas Ohlson online store
+# Clas Ohlson Online Store (Clone)
 
-Here you will find the fronend for the clone of the online store https://www.clasohlson.com/no/
+This is my frontend school project where I´m creating a simple clone of the Clas Ohlson online store:
+https://www.clasohlson.com/no/
 
-## Subheading
-Paragraph
+Users can do the following:
+See the logo, search bar, and navigation at the top
+Add products to the shopping cart
+View total price and product count
+
+## Technologies
+- Vue 3 (Composition API)
+- Vite (build tool)
+- Tailwind CSS (styling)
+
+## Getting started
+Install dependencies:
+
+npm install
+
+
+Run the project locally:
+
+npm run dev
+
+
+The app will be available at http://localhost:5173
