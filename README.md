@@ -13,17 +13,30 @@ View total price and product count
 - Vite (build tool)
 - Tailwind CSS (styling)
 
-## Getting started
-Install dependencies:
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/sohaila90/Clas-Ohlson-Frontend.git
+
+```
+
+Navigate to the project directory:
+
+```bash
+cd Clas-Ohlson-Frontend
+````
+Install the dependencies:
 
 ```bash
 npm install
 ```
 
-Run the project locally:
+## Running the Application
+To run the application in development mode:
 
 ```bash
 npm run dev
-````
-
+```
 The app will be available at http://localhost:5173
