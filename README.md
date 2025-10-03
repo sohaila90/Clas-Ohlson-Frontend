@@ -4,9 +4,9 @@ This is my frontend school project where I´m creating a simple clone of the Cla
 https://www.clasohlson.com/no/
 
 Users can do the following:
-See the logo, search bar, and navigation at the top
-Add products to the shopping cart
-View total price and product count
+- See the logo, search bar, and navigation at the top
+- Add products to the shopping cart
+- View total price and product count
 
 ## Technologies
 - Vue 3 (Composition API)
