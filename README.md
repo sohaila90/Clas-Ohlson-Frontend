@@ -16,6 +16,7 @@ View total price and product count
 ## Getting started
 Install dependencies:
 
+```bash
 npm install
 
 
