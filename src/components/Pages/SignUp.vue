@@ -9,7 +9,7 @@ export default {
       Firname: "",
       Lastname: "",
       Email: "",
-      Phone: "", // husk at denne kan hete phone pga det er internt
+      Phone: "",
       Password: "",
       ConfirmPassword: "",
     };
@@ -27,7 +27,7 @@ export default {
           firname: this.Firname,
           lastname: this.Lastname,
           email: this.Email,
-          number: this.Phone, // må bruke number som er riktig nøkkel for å sende til backend
+          number: this.Phone,
           password: this.Password,
           confirmPassword: this.confirmPassword,
         };
@@ -35,10 +35,8 @@ export default {
         const response = await Api.addUser(newUser);
         console.log("Bruker opprettet:", response.data);
 
-        // legg til bruker i lista
         this.users.push(response.data);
 
-        // tøm inputfeltene
         this.Firname = "";
         this.Lastname = "";
         this.Email = "";
@@ -88,13 +86,6 @@ export default {
     <button type="submit">Bli medlem</button>
   </form>
 
-  <!-- <p>Api fra Rider</p>
-  <ul>
-    <li v-for="user in users" :key="user.id">
-      {{ user.Firname }} {{ user.lastName }} {{ user.email }} {{ user.number }}
-      {{ user.password }}
-    </li>
-  </ul> -->
 </template>
 
 <style>

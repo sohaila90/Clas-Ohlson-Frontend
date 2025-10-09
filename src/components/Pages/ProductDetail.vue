@@ -4,11 +4,9 @@ import { useRoute } from "vue-router";
 import Api from "@/services/Api";
 import { addProduct } from "@/store/cart";
 
-// Hent id fra url
 const route = useRoute();
 const product = ref(null);
 
-// Når comp laster inn hent produktet fra API
 onMounted(async () => {
   try {
     const response = await Api.getProduct(route.params.id);
@@ -37,9 +35,6 @@ onMounted(async () => {
     <p class="text-gray-600">{{ product.category }}</p>
   </div>
 
-  <!-- <p :class="product.inStock ? 'text-green-600' : 'text-red-600'">
-    {{ product.inStock ? "På lager" : "Ikke på lager" }}
-  </p> -->
   <button
     @click="addProduct(product)"
     class="mt-3 w-full bg-black text-white font-bold py-2 rounded hover:bg-grey-500"

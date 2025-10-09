@@ -10,15 +10,12 @@ onMounted(async () => {
   const response = await Api.getProducts();
   products.value = response.data;
 
-  // Hent cart fra backend og sett inn i store
   const cartResponse = await Api.getCartItems();
   setCart(cartResponse.data);
 });
 
-// Legg til i handlekurv (både store og backend)
 async function addToCart(product) {
-  addProduct(product); // oppdater frontend
-
+  addProduct(product);
   try {
     await Api.addToCartApi({
       productId: product.id,
@@ -33,9 +30,8 @@ async function addToCart(product) {
   }
 }
 
-// Fjern fra handlekurv (både store og backend)
 async function removeFromCart(product) {
-  reduceBtn(product); // oppdater frontend
+  reduceBtn(product);
   await Api.removeFromCart({
     productId: product.id,
     userId: 1,
